@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnMultiplication;
     private Button btnDivision;
     private TextView txtResult;
+    private Button btnClear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,46 +29,73 @@ public class MainActivity extends AppCompatActivity {
         btnAddition = (Button) findViewById(R.id.btnAddition);
         btnSubtraction = (Button) findViewById(R.id.btnSubtraction);
         btnMultiplication = (Button) findViewById(R.id.btnMultiplication);
+        btnClear = (Button) findViewById(R.id.btnClear);
         btnDivision = (Button) findViewById(R.id.btnDivision);
         txtResult = (TextView) findViewById(R.id.txtResult);
+
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operand1.setText("");
+                operand2.setText("");
+                txtResult.setText("0.0");
+                operand1.requestFocus();
+            }
+        });
 
         btnAddition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double oper1= Double.parseDouble(operand1.getText().toString());
-                double oper2= Double.parseDouble(operand2.getText().toString());
-                double result = oper1 + oper2;
-                txtResult.setText(Double.toString(result));
+                if ( (operand1.getText().length()>0) && (operand2.getText().length()>0) ) {
+                    double oper1 = Double.parseDouble(operand1.getText().toString());
+                    double oper2 = Double.parseDouble(operand2.getText().toString());
+                    double result = oper1 + oper2;
+                    txtResult.setText(Double.toString(result));
+                } else {
+                    Toast.makeText(MainActivity.this,"Please enter two numbers in both fields",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         btnSubtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double oper1= Double.parseDouble(operand1.getText().toString());
-                double oper2= Double.parseDouble(operand2.getText().toString());
-                double result = oper1 - oper2;
-                txtResult.setText(Double.toString(result));
+                if ( (operand1.getText().length()>0) && (operand2.getText().length()>0) ) {
+                    double oper1 = Double.parseDouble(operand1.getText().toString());
+                    double oper2 = Double.parseDouble(operand2.getText().toString());
+                    double result = oper1 - oper2;
+                    txtResult.setText(Double.toString(result));
+                }else {
+                    Toast.makeText(MainActivity.this,"Please enter two numbers in both fields",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         btnMultiplication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double oper1= Double.parseDouble(operand1.getText().toString());
-                double oper2= Double.parseDouble(operand2.getText().toString());
-                double result = oper1 * oper2;
-                txtResult.setText(Double.toString(result));
+                if ( (operand1.getText().length()>0) && (operand2.getText().length()>0) ) {
+                    double oper1 = Double.parseDouble(operand1.getText().toString());
+                    double oper2 = Double.parseDouble(operand2.getText().toString());
+                    double result = oper1 * oper2;
+                    txtResult.setText(Double.toString(result));
+                }else {
+                    Toast.makeText(MainActivity.this,"Please enter two numbers in both fields",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         btnDivision.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double oper1= Double.parseDouble(operand1.getText().toString());
-                double oper2= Double.parseDouble(operand2.getText().toString());
-                double result = oper1 / oper2;
-                txtResult.setText(Double.toString(result));
+                if ( (operand1.getText().length()>0) && (operand2.getText().length()>0) ) {
+                    double oper1 = Double.parseDouble(operand1.getText().toString());
+                    double oper2 = Double.parseDouble(operand2.getText().toString());
+                    double result = oper1 / oper2;
+                    txtResult.setText(Double.toString(result));
+                }else {
+                    Toast.makeText(MainActivity.this,"Please enter two numbers in both fields",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
